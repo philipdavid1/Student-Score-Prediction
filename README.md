@@ -12,7 +12,7 @@ The primary objective of higher education institutions is to impart quality educ
 
 This project focuses on evaluating students’ capabilities in various subjects using a classification task. Data classification has many approaches, and the decision tree method and probabilistic classification method are utilized here. By performing this task, knowledge is extracted that describes students’ performance in the end-semester examination. This helps in identifying dropouts and students who require special attention, enabling teachers to provide appropriate advising and counseling
 
-Life cycle of this project: https://user-images.githubusercontent.com/116423301/239153929-de5c92fc-62b3-4cac-b16e-9274e1fdde02.png
+Life cycle of this project: ![image](https://github.com/saibattula93/Student_Performance_Prediction/assets/116423301/0b7b3892-f3ce-4517-9660-def3bd5debfc)
 
 
 **If you can read on more about my project in detail please click my blog: https://www.analyticsvidhya.com/blog/2023/04/student-performance-analysis-and-prediction/** 
