@@ -23,17 +23,17 @@ jobs:
 
       # Step 3: Build the Docker image
       - name: Build Docker Image
-        run: docker build -t your-docker-registry/regression_app:latest .
+        run: docker build -t saibatttula93/regression_app:latest .
         # Replace "your-docker-registry/regression_app" with your actual image name and registry
 
       # Step 4: Push the Docker image to the container registry
       - name: Push Docker Image
-        run: docker push your-docker-registry/regression_app:latest
+        run: docker push saibatttula93/regression_app:latest
         # Replace "your-docker-registry/regression_app" with your actual image name and registry
 
       # Step 5: Run the Docker container
       - name: Run Docker Container
-        run: docker run -d -p 8000:8000 your-docker-registry/regression_app:latest
+        run: docker run -d -p 8000:8000 saibatttula93/regression_app:latest
         # Replace "your-docker-registry/regression_app" with your actual image name and registry
 
       # Step 6: Check if the application is running
