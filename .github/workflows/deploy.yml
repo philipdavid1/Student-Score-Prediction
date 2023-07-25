@@ -9,6 +9,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    env:
+      DOCKER_IMAGE_TAG: latest  # Define the Docker image tag here (modify as needed)
+
     steps:
       # Step 1: Checkout the code
       - name: Checkout Code
@@ -19,12 +22,16 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .  # The context for Docker build (location of Dockerfile and application code)
-          push: true  # Set to "true" if you want to push the image to a container registry
+          push: true   # Set to "true" to push the image to a container registry
+          tags: your-docker-registry/regression_app:${latest}
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          # Add any other environment variables required for the image build, if applicable
 
       # Step 3: Run the Docker container
       - name: Run Docker Container
-        run: docker run -d -p 8000:8000 regression_app:latest
-        # Replace <image_name>:<tag> with the name and tag of your Docker image
+        run: docker run -d -p 8000:8000 your-docker-registry/my_ml_app:${latest}
 
       # Step 4: Check if the application is running
       - name: Wait for Application
@@ -34,6 +41,4 @@ jobs:
           done
         timeout-minutes: 5  # Adjust the timeout as per your application's startup time
 
-      # Step 5: Perform testing or other necessary tasks
-      
-  #Sai Durga Prasad
+#Sai Durga Prasad
