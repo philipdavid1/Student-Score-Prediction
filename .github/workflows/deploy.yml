@@ -19,7 +19,7 @@ jobs:
 
       # Step 2: Log in to Docker Hub or your container registry
       - name: Log in to Container Registry
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin your-docker-registry
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}"
 
       # Step 3: Build the Docker image
       - name: Build Docker Image
