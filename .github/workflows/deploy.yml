@@ -23,7 +23,7 @@ jobs:
         with:
           context: .  # The context for Docker build (location of Dockerfile and application code)
           push: true   # Set to "true" to push the image to a container registry
-          tags: your-docker-registry/regression_app:${de52fa633bf0}
+          tags: your-docker-registry/regression_app:${{ env.latest }}
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -31,7 +31,7 @@ jobs:
 
       # Step 3: Run the Docker container
       - name: Run Docker Container
-        run: docker run -d -p 8000:8000 your-docker-registry/regression_app:${de52fa633bf0}
+        run: docker run -d -p 8000:8000 your-docker-registry/regression_app:${{ env.latest }}
 
       # Step 4: Check if the application is running
       - name: Wait for Application
