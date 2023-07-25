@@ -1,4 +1,4 @@
-name: ML Application Deployment
+name: Deploy ML Application
 
 on:
   push:
@@ -9,39 +9,17 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    env:
-      DOCKER_IMAGE_TAG: latest  # Define the Docker image tag here (modify as needed)
-
     steps:
-      # Step 1: Checkout the code
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Log in to Docker Hub or your container registry
-      - name: Log in to Container Registry
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}"
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: saibatttula93/regression-app:latest
+          # Replace 'your-docker-registry/your-image-name' with your actual Docker image repository and image name
 
-      # Step 3: Build the Docker image
-      - name: Build Docker Image
-        run: docker build -t saibatttula93/regression_app:latest .
-        # Replace "your-docker-registry/regression_app" with your actual image name and registry
-
-      # Step 4: Push the Docker image to the container registry
-      - name: Push Docker Image
-        run: docker push saibatttula93/regression_app:latest
-        # Replace "your-docker-registry/regression_app" with your actual image name and registry
-
-      # Step 5: Run the Docker container
-      - name: Run Docker Container
-        run: docker run -d -p 8000:8000 saibatttula93/regression_app:latest
-        # Replace "your-docker-registry/regression_app" with your actual image name and registry
-
-      # Step 6: Check if the application is running
-      - name: Wait for Application
-        run: |
-          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8000)" != "200" ]]; do
-            sleep 5
-          done
-        timeout-minutes: 5  # Adjust the timeout as per your application's startup time
-
-#Sai Durga Prasad
+      # Add any additional steps you may need for your specific deployment environment,
+      # such as deploying to a cloud service like AWS ECS, GCP GKE, or Azure AKS.
