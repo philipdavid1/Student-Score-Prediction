@@ -1,4 +1,4 @@
-name: Deploy ML Application
+name: Deploy ML web App
 
 on:
   push:
@@ -8,18 +8,23 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and Push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: saibatttula93/regression-app:latest
-          # Replace 'your-docker-registry/your-image-name' with your actual Docker image repository and image name
+      - name: Build Docker image
+        run: docker build -t saibatttula93/regression-app:latest .
+
+      # Log in to Docker Hub (or your container registry) using a Personal Access Token (PAT)
+      - name: Log in to Docker Hub
+        run: docker login --username saibatttula93 --password ${{ secrets.DOCKERHUB_TOKEN }}
+        # Replace YOUR_DOCKER_USERNAME with your Docker Hub username
+        # Use the secret DOCKERHUB_TOKEN defined in your repository's Secrets settings
+
+      - name: Push Docker image to Docker Hub
+        run: docker push saibatttula93/regression-app:latest
 
       # Add any additional steps you may need for your specific deployment environment,
       # such as deploying to a cloud service like AWS ECS, GCP GKE, or Azure AKS.
