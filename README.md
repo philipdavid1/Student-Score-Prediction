@@ -1,5 +1,6 @@
 # Student performance prediction using MLops
-
+## Demo video of Student performance prediction
+https://github.com/saibattula93/Student_Performance_Prediction/assets/116423301/8ec0ef26-c3f5-4a50-9c74-968a0e7bd416
 ## Introduction
 
 Student performance analysis and prediction using datasets has become an essential component of modern education systems. With the increasing availability of data on student demographics, academic history, and other relevant factors, schools and universities are using advanced analytics and machine learning algorithms to gain insights into student performance and predict future outcomes. This approach helps educators identify areas of improvement, personalize learning experiences, and provide targeted support to struggling students. Furthermore, student performance analysis and prediction can also aid in decision-making processes for school administrators and policymakers, helping them allocate resources more effectively. In this article, we will explore the benefits of using datasets for student performance analysis and prediction and discuss some of the methods and tools used in this field.
