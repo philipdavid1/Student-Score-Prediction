@@ -1,6 +1,7 @@
 from flask import Flask,request,render_template
 import numpy as np
 import pandas as pd
+import webbrowser
 
 from sklearn.preprocessing import StandardScaler
 from src.pipeline.predict_pipeline import CustomData,PredictPipeline
@@ -41,4 +42,6 @@ def predict_datapoint():
     
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0",debug=True)
+    webbrowser.open("http://127.0.0.1:5000/predictdata")
+    app.run(host="0.0.0.0", port=5000)
+    
